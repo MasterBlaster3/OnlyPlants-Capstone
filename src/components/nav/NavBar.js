@@ -1,25 +1,17 @@
-import { Link, useNavigate } from "react-router-dom"
+import { UserNav } from "./UserNav"
+import { AdminNav } from "./AdminNav"
 import "./NavBar.css"
 
-export const NavBar = () => {
-    const navigate = useNavigate()
+export const NavBar= () => {
+	
+	const localPlantUser = localStorage.getItem("plant_user")
+    const plantUserObject = JSON.parse(localPlantUser)
 
-    return (
-        <ul className="navbar">
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/tickets">Tickets</Link>
-            </li>
-            {
-                localStorage.getItem("plants_user")
-                    ? <li className="navbar__item navbar__logout">
-                        <Link className="navbar__link" to="" onClick={() => {
-                            localStorage.removeItem("plants_user")
-                            navigate("/", {replace: true})
-                        }}>Logout</Link>
-                    </li>
-                    : ""
-            }
-        </ul>
-    )
+	if (plantUserObject.admin) {
+		return <AdminNav />
+	}
+	else {
+		return <UserNav />
+	}
 }
 
