@@ -21,11 +21,11 @@ export const addPlant=(newPlant) => {
 }
 
 
-// export const deletePlant = (plantId) => {
-//     return fetch(`${ApiURL}/plants/${plantId}`, {
-//         method: "DELETE" 
-//         }).then(result => result.json())    
-// }
+export const deletePlant = (plantId) => {
+    return fetch(`${ApiURL}/plants/${plantId}`, {
+        method: "DELETE" 
+        }).then(result => result.json())    
+}
 
 
 // export const updatePlant = (singleTask) => {

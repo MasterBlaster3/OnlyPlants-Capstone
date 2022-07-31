@@ -17,6 +17,18 @@ export const PlantList = () => {
         })        
     }
 
+    // const handleUpdatePlant = (id) => {
+    //     const editedPlant = {
+    //         id: id,
+            
+    //     }
+    //     updatePlant(editedPlant).then(() => getAllPlants().then(setPlants))
+    // }
+    // useEffect(() => {
+    //     getPlants()
+    // }, [])
+
+
     return (
         <>
         <section className="plant_cards">
@@ -29,7 +41,8 @@ export const PlantList = () => {
                 
                     return (
               <PlantCard
-                    key={plants.id}                    
+                    key={plants.id}
+                                    
                     getPlants={getPlants}
                      />  
             )}  
