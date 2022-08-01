@@ -1,5 +1,5 @@
 
-const ApiURL = "http://localhost:8088";
+const ApiURL = "http://localhost:8088/plants";
 
 
 
@@ -11,7 +11,7 @@ export const getAllPlants = () => {
 
 
 export const addPlant=(newPlant) => {
-    return fetch(`${ApiURL}/plants`, {
+    return fetch(`${ApiURL}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -22,7 +22,7 @@ export const addPlant=(newPlant) => {
 
 
 export const deletePlant = (plantId) => {
-    return fetch(`${ApiURL}/plants/${plantId}`, {
+    return fetch(`${ApiURL}/${plantId}`, {
         method: "DELETE" 
         }).then(result => result.json())    
 }

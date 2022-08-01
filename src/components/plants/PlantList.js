@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getAllPlants } from "../modules/ApiManager"
+import { getAllPlants } from "../modules/PlantManager"
 import { PlantCard } from "./PlantCard"
 
 
 export const PlantList = () => {
     const navigate = useNavigate()
-    const [admin, setAdmin] = useState([])
+    // const [admin, setAdmin] = useState([])
 
     const [plants, setPlants] = useState([])
     const [filteredPlants, setFilteredPlants] = useState([])
@@ -17,6 +17,8 @@ export const PlantList = () => {
         })        
     }
 
+
+
     // const handleUpdatePlant = (id) => {
     //     const editedPlant = {
     //         id: id,
@@ -24,9 +26,9 @@ export const PlantList = () => {
     //     }
     //     updatePlant(editedPlant).then(() => getAllPlants().then(setPlants))
     // }
-    // useEffect(() => {
-    //     getPlants()
-    // }, [])
+    useEffect(() => {
+        getPlants()
+    }, [])
 
 
     return (
@@ -41,9 +43,8 @@ export const PlantList = () => {
                 
                     return (
               <PlantCard
-                    key={plants.id}
-                                    
-                    getPlants={getPlants}
+                    key={plant.id}                                    
+                    plant ={plant}
                      />  
             )}  
                     
