@@ -5,13 +5,13 @@ import { deletePlant } from "../modules/PlantManager"
 import "./PlantCard.css"
 
 
-export const PlantCard = ({plant}) => {
+export const PlantCard = ({plant, getPlants}) => {
     
     
-    // const handleDeletePlant = () => {
-    //     deletePlant(singlePlant.id)
-    //     .then(getPlants)
-    // }
+    const handleDeletePlant = () => {
+        deletePlant(plant.id)
+        .then(getPlants)
+    }
 
     
 
@@ -34,6 +34,8 @@ export const PlantCard = ({plant}) => {
                     <p>Plant Variety: {plant?.plantType}</p>
                     <p>Watering Needs: {plant?.water}</p>
 
+
+                    <button className="delete_btn" onClick={handleDeletePlant}>Delete</button>
                     {/* <Link  to={`/plants/${singlePlant.id}/edit`} >
                         <button class="btn">Edit</button>
                         </Link> */}

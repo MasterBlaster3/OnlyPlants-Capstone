@@ -21,8 +21,8 @@ export const addPlant=(newPlant) => {
 }
 
 
-export const deletePlant = (plantId) => {
-    return fetch(`${ApiURL}/${plantId}`, {
+export const deletePlant = (plant) => {
+    return fetch(`${ApiURL}/${plant}`, {
         method: "DELETE" 
         }).then(result => result.json())    
 }
