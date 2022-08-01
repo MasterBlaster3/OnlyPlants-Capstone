@@ -8,7 +8,7 @@ export const UserViews = () => {
             <Route path="/" element={
                 <>
                     <h1>OnlyPlants</h1>
-                    <div>Your one-stop-shop to get all your plants fixed</div>
+                    <div>An incredibly well thought out app to help you keep your living things alive.</div>
 
                     <Outlet />
                 </>

@@ -7,8 +7,12 @@ import { useNavigate } from "react-router-dom"
 export const PlantForm = () => {
     const navigate = useNavigate()
 
+    const localPlantUser = localStorage.getItem("plant_user")
+    const plantUserObject = JSON.parse(localPlantUser)
+
      // SETS THE INITIAL ANIMAL AND CREATES THE XP NUMBER
      const [plant, setPlant] = useState({
+        userId: plantUserObject.id,
         plantName: "",
         species: "",
         light: "",
@@ -17,6 +21,7 @@ export const PlantForm = () => {
         tempRange: "",
         plantType: "",
         water: "",
+    
         // userId: JSON.parse(localStorage.getItem("plant_user")).id
     })
 
@@ -36,7 +41,7 @@ export const PlantForm = () => {
             .then(() => {
                 alert(`You added ${plant.plantName} to your plant list!`)
             })
-            .then(() => { navigate("/home") })
+            .then(() => { navigate("/plants") })
     }
 
     // PLANT ENTRY FORM
@@ -49,7 +54,7 @@ export const PlantForm = () => {
                     <fieldset>
                         <div className="form-group">
                             <label htmlFor="plantName">What kind of plant did you buy this time???</label><br />
-                            <input type="text" id="name" onChange={handleControlledInputChange} required placeholder="Plant name" value={plant.name} />
+                            <input type="text" id="plantName" onChange={handleControlledInputChange} required placeholder="Plant name" value={plant.plantName} />
                         </div>
                     </fieldset>
                     <fieldset>

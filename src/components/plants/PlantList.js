@@ -6,11 +6,16 @@ import { PlantCard } from "./PlantCard"
 
 export const PlantList = () => {
     const navigate = useNavigate()
-    // const [admin, setAdmin] = useState([])
+
+    //gets local storage user info
+    const localPlantUser = localStorage.getItem("plant_user")
+    const plantUserObject = JSON.parse(localPlantUser)
 
     const [plants, setPlants] = useState([])
-    // const [filteredPlants, setFilteredPlants] = useState([])
+    const [filteredPlants, setFilteredPlants] = useState([])
 
+
+    //gets plants from api thru manager
     const getPlants = () => {
         getAllPlants().then(plantsFromAPI => {
             setPlants(plantsFromAPI)
@@ -19,6 +24,21 @@ export const PlantList = () => {
 
 
 
+    useEffect(
+        () => {
+            if (plantUserObject.isAdmin) {
+                //for admin
+                setFilteredPlants(plants)
+
+            }
+            else {
+                //for users
+                const myPlants = plants.filter(plant => plant.userId === plantUserObject.id)
+                setFilteredPlants(myPlants)
+            }
+        },
+        [plants]
+    )
     // const handleUpdatePlant = (id) => {
     //     const editedPlant = {
     //         id: id,
@@ -26,6 +46,8 @@ export const PlantList = () => {
     //     }
     //     updatePlant(editedPlant).then(() => getAllPlants().then(setPlants))
     // }
+
+    //sets plants
     useEffect(() => {
         getPlants()
     }, [])
@@ -36,11 +58,22 @@ export const PlantList = () => {
         
         <button type="button"
             className="add_plant_button"
-            onClick={() => {navigate("/plants/add")}}>You got another plant you fool!</button>
+            onClick={() => {navigate("/plants/add")}}>Did you buy another plant you fool?!</button>
         
         <h2>The plant hoard...</h2>
-        <div className="plant_list">
-            {plants.map((plant) => {
+        <article className="plant_list">
+        {
+                filteredPlants.map(
+                    (filteredPlant) => <PlantCard key={`filteredPlants--${filteredPlant.id}`}
+                    getAllPlants={getAllPlants}
+                    currentUser={plantUserObject}
+                    plantObject={filteredPlant} />
+                )
+            }
+
+
+
+            {/* {plants.map((plant) => {
                 
                     return (
               <PlantCard
@@ -49,8 +82,8 @@ export const PlantList = () => {
                      />  
             )}  
                     
-            )}
-        </div>                                    
+            )} */}
+        </article>                                    
         </>
     )
 }
