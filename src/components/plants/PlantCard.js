@@ -40,9 +40,6 @@ export const PlantCard = ({plant, getPlants}) => {
                         <button class="btn">Edit</button>
                         </Link> */}
 
-                        {/* <Link to={`/plants`} >
-                        <button class="btn" onClick={handleDeletePlant}>Delete</button>
-                        </Link> */}
                         
                 </div>
             </div>

@@ -9,7 +9,7 @@ export const PlantList = () => {
     // const [admin, setAdmin] = useState([])
 
     const [plants, setPlants] = useState([])
-    const [filteredPlants, setFilteredPlants] = useState([])
+    // const [filteredPlants, setFilteredPlants] = useState([])
 
     const getPlants = () => {
         getAllPlants().then(plantsFromAPI => {
@@ -33,12 +33,13 @@ export const PlantList = () => {
 
     return (
         <>
-        <section className="plant_cards">
+        
         <button type="button"
-            className="btn"
-            onClick={() => {navigate("/plants/add")}}>New Plant!</button>
-        </section>
-        <div className="container_cards">
+            className="add_plant_button"
+            onClick={() => {navigate("/plants/add")}}>You got another plant you fool!</button>
+        
+        <h2>The plant hoard...</h2>
+        <div className="plant_list">
             {plants.map((plant) => {
                 
                     return (
