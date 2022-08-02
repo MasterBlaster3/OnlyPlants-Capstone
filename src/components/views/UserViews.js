@@ -16,7 +16,6 @@ export const UserViews = () => {
 
                 <Route path="plants" element={ <PlantList /> } />
 				<Route path="plants/add" element={<PlantForm />} />
-                {/* <Route path="plants/:plantId/edit" element={<PlantEditForm/>}/> */}
             </Route>
         </Routes>
     )

@@ -3,9 +3,10 @@ import { deletePlant } from "../modules/PlantManager"
 import "./PlantCard.css"
 
 
+
 export const PlantCard = ({plantObject, getPlants}) => {
     
-    
+    //pulls in the deletePlant fetch from plantmanager and handles deleting the clicked on plant
     const handleDeletePlant = () => {
         deletePlant(plantObject.id)
         .then(getPlants)
@@ -15,7 +16,7 @@ export const PlantCard = ({plantObject, getPlants}) => {
 
 
     
-    
+    //this is the plant card that gets populated in plantlist with the plant array that gets called into it
     return (
         <>
             <div className="plant_card">

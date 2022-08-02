@@ -17,13 +17,14 @@ export const PlantList = () => {
 
     //gets plants from api thru manager
     const getPlants = () => {
+        
         getAllPlants().then(plantsFromAPI => {
             setPlants(plantsFromAPI)
         })        
     }
 
 
-
+    //filters between user and admin
     useEffect(
         () => {
             if (plantUserObject.isAdmin) {
@@ -39,23 +40,18 @@ export const PlantList = () => {
         },
         [plants]
     )
-    // const handleUpdatePlant = (id) => {
-    //     const editedPlant = {
-    //         id: id,
-            
-    //     }
-    //     updatePlant(editedPlant).then(() => getAllPlants().then(setPlants))
-    // }
-
+   
+    
     //sets plants
     useEffect(() => {
         getPlants()
     }, [])
 
 
+
+    //user will see a filtered list of plants they own in a plant card format as well as a snarky button to add a new plant to their collection
     return (
-        <>
-        
+        <>        
         <button type="button"
             className="add_plant_button"
             onClick={() => {navigate("/plants/add")}}>Did you buy another plant you fool?!</button>
@@ -65,24 +61,11 @@ export const PlantList = () => {
         {
                 filteredPlants.map(
                     (filteredPlant) => <PlantCard key={`filteredPlants--${filteredPlant.id}`}
-                    getAllPlants={getAllPlants}
+                    getPlants={getPlants}
                     currentUser={plantUserObject}
                     plantObject={filteredPlant} />
                 )
             }
-
-
-
-            {/* {plants.map((plant) => {
-                
-                    return (
-              <PlantCard
-                    key={plant.id}                                    
-                    plant ={plant}
-                     />  
-            )}  
-                    
-            )} */}
         </article>                                    
         </>
     )

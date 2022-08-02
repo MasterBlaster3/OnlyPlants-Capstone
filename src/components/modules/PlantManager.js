@@ -24,21 +24,5 @@ export const addPlant=(newPlant) => {
 export const deletePlant = (plant) => {
     return fetch(`${ApiURL}/${plant}`, {
         method: "DELETE" 
-        }).then(result => result.json())    
+        })   
 }
-
-
-// export const updatePlant = (singleTask) => {
-//     return fetch (`${ApiURL}/plants/${singleTask.id}`, {
-//         method: "PATCH",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(singleTask)
-//     }).then(data => data.json())
-// }
-
-// export const getPlantById=(plantId)=>{
-//     return fetch(`${ApiURL}/plants/${plantId}`)
-//   .then(res => res.json())
-// }

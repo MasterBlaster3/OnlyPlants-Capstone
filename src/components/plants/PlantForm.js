@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom"
 export const PlantForm = () => {
     const navigate = useNavigate()
 
+    //defines current user
     const localPlantUser = localStorage.getItem("plant_user")
     const plantUserObject = JSON.parse(localPlantUser)
 
-     // SETS THE INITIAL ANIMAL AND CREATES THE XP NUMBER
+     // sets the initial plant state
      const [plant, setPlant] = useState({
         userId: plantUserObject.id,
         plantName: "",
@@ -21,20 +22,17 @@ export const PlantForm = () => {
         tempRange: "",
         plantType: "",
         water: "",
-    
-        // userId: JSON.parse(localStorage.getItem("plant_user")).id
     })
 
     
-
-    // WHEN 'CHANGE' HAPPENS IN THE FORM THE VALUE IS CHANGED IN THE OBJECT USESTATE
+    //when "change" happens in the form, the value is changed in the object useState
     const handleControlledInputChange = (event) => {
         const newPlant = { ...plant }
         let selectedVal = event.target.value
         newPlant[event.target.id] = selectedVal
         setPlant(newPlant)
     }
-    // WHEN THE ADD PLANT BUTTON IS CLICKED THE Plant OBJECT IN THE USESTATE IS SAVED WITH A FETCH CALL TO THE PLANTS ARRAY IN THE API. THE USER RECIEVES AN ALERT AND ONCE THEY CLICK "OK" THEY NAVIGATE TO THE HOME PAGE. 
+    // when the add plant button is clicked, the plant object in the useState is saved with a fetch call to the plants array in the api. the user receives an alert and once they click "ok" they navigate back to the plants collection page
     const handleClickSavePlant = (event) => {
         event.preventDefault()
         addPlant(plant)
@@ -44,7 +42,7 @@ export const PlantForm = () => {
             .then(() => { navigate("/plants") })
     }
 
-    // PLANT ENTRY FORM
+    // new plant entry page
     return (
         <>
 
