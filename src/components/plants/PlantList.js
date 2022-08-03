@@ -15,6 +15,7 @@ export const PlantList = () => {
     const [filteredPlants, setFilteredPlants] = useState([])
 
 
+
     //gets plants from api thru manager
     const getPlants = () => {
         
