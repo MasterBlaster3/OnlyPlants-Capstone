@@ -49,6 +49,9 @@ export const PlantList = () => {
     }, [])
 
 
+    
+
+
 
     //user will see a filtered list of plants they own in a plant card format as well as a snarky button to add a new plant to their collection
     return (

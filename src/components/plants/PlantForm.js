@@ -1,6 +1,6 @@
 //Where the new plant form will live
 import { addPlant } from "../modules/PlantManager"
-import React, { useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 

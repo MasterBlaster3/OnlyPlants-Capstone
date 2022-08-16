@@ -1,6 +1,8 @@
 import { Outlet, Route, Routes } from "react-router-dom"
+import { PlantEditForm } from "../plants/EditPlantForm"
 import { PlantForm } from "../plants/PlantForm"
 import { PlantList } from "../plants/PlantList"
+
 
 
 export const AdminViews = () => {
@@ -16,6 +18,7 @@ export const AdminViews = () => {
             }>
                 <Route path="plants" element={ <PlantList /> } />
                 <Route path="plants/add" element={<PlantForm />} />
+                <Route path="plants/edit" element={<PlantEditForm />} />
             </Route>
         </Routes>
     )
