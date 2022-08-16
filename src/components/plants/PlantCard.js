@@ -1,11 +1,24 @@
 //Where I want to place the plant card for each plant object that I can then populate the collection with
-import { deletePlant } from "../modules/PlantManager"
+import { deletePlant, updatePlant, getAllPlants } from "../modules/PlantManager"
 import "./PlantCard.css"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 
 
-export const PlantCard = ({plantObject, getPlants}) => {
+export const PlantCard = ({plantObject, getAllPlants}) => {
+    const [ plants, setPlants ] = useState([])
+    const navigate = useNavigate()
+
+
+    const getPlants = () => {
+        
+        getAllPlants().then(plantsFromAPI => {
+            setPlants(plantsFromAPI)
+        })        
+    }
     
+
     //pulls in the deletePlant fetch from plantmanager and handles deleting the clicked on plant
     const handleDeletePlant = () => {
         deletePlant(plantObject.id)
@@ -35,11 +48,7 @@ export const PlantCard = ({plantObject, getPlants}) => {
 
 
                     <button className="delete_btn" onClick={handleDeletePlant}>Delete</button>
-                    {/* <Link  to={`/plants/${singlePlant.id}/edit`} >
-                        <button class="btn">Edit</button>
-                        </Link> */}
-
-                        
+                    <button className="update_btn" onClick={() => {navigate(`/plants/edit/${plantObject.id}`)}}>Edit</button>                    
                 </div>
             </div>
         </>
